@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Projectes</h2>
+
+{% if projectes %}
+  <div class="grid">
+  {% for p in projectes %}
+    <div class="card">
+      <h3>{{ p.titol }}</h3>
+      <p>{{ p.descripcio[:120] }}{% if p.descripcio|length > 120 %}...{% endif %}</p>
+      <p>Recaptat: {{ "%.2f"|format(p.recaptat) }} / {{ "%.2f"|format(p.maxim_projecte) }}</p>
+      <p>Objectiu: {{ "%.2f"|format(p.objectiu) }}</p>
+      <a class="btn" href="{{ url_for('veure_projecte', projecte_id=p.id) }}">Veure</a>
+      <a class="btn" href="{{ url_for('aportar', projecte_id=p.id) }}">Aportar</a>
+    </div>
+  {% endfor %}
+  </div>
+{% else %}
+  <p>No hi ha projectes. <a href="{{ url_for('crear_projecte') }}">Crea’n un</a>.</p>
+{% endif %}
+{% endblock %}

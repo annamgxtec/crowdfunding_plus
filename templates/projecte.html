@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>{{ projecte.titol }}</h2>
+<p>{{ projecte.descripcio }}</p>
+
+<div class="progres">
+  <div class="bar" style="width: {{ percentatge }}%"></div>
+</div>
+<p>{{ "%.2f"|format(projecte.recaptat) }} / {{ "%.2f"|format(projecte.maxim_projecte) }} EGLD ({{ "%.1f"|format(percentatge) }}%)</p>
+
+<h3>Aportacions</h3>
+{% if projecte.aportacions %}
+  <table>
+    <tr><th>Usuari</th><th>Quantitat</th><th>Data</th></tr>
+    {% for a in projecte.aportacions %}
+      <tr>
+        <td>{{ a.usuari }}</td>
+        <td>{{ "%.2f"|format(a.quantitat) }}</td>
+        <td>{{ a.data.strftime('%Y-%m-%d %H:%M') }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+{% else %}
+  <p>Encara no hi ha aportacions.</p>
+{% endif %}
+
+<p><a class="btn" href="{{ url_for('aportar', projecte_id=projecte.id) }}">Aportar</a></p>
+{% endblock %}

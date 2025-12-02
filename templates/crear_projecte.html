@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Crear projecte</h2>
+<form method="post">
+  <label>Títol:<br><input type="text" name="titol" required></label><br>
+  <label>Descripció:<br><textarea name="descripcio"></textarea></label><br>
+  <label>Objectiu (EGLD):<br><input type="number" name="objectiu" step="0.01" value="100"></label><br>
+  <label>Mínim per donació (EGLD):<br><input type="number" name="minim_per_donacio" step="0.01" value="1"></label><br>
+  <label>Màxim per donant (EGLD):<br><input type="number" name="maxim_per_donant" step="0.01" value="50"></label><br>
+  <label>Màxim total projecte (EGLD):<br><input type="number" name="maxim_projecte" step="0.01" value="200"></label><br>
+  <button type="submit">Crear</button>
+</form>
+{% endblock %}

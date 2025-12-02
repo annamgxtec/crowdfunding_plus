@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Aportar a: {{ projecte.titol }}</h2>
+<form method="post">
+  <label>Nom (usuari):<br><input type="text" name="nom" required></label><br>
+  <label>Quantitat (EGLD):<br><input type="number" name="quantitat" step="0.01" required></label><br>
+  <button type="submit">Aportar</button>
+</form>
+<p>Regles del projecte:</p>
+<ul>
+  <li>Mínim per donació: {{ projecte.minim_per_donacio }} EGLD</li>
+  <li>Màxim per donant (acumulat): {{ projecte.maxim_per_donant }} EGLD</li>
+  <li>Màxim total del projecte: {{ projecte.maxim_projecte }} EGLD</li>
+</ul>
+{% endblock %}
